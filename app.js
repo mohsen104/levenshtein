@@ -1,4 +1,4 @@
-// تابعی برای محاسبه فاصله Levenshtein
+// Function to calculate the Levenshtein distance
 function levenshtein(a, b) {
     const matrix = [];
 
@@ -27,7 +27,7 @@ function levenshtein(a, b) {
     return matrix[b.length][a.length];
 }
 
-// تابعی برای پیدا کردن نزدیک‌ترین کلمه
+// Function to find the closest word
 function findClosestWord(input, words, threshold = 5) {
     let closestWord = '';
     let closestDistance = Infinity;
@@ -40,21 +40,21 @@ function findClosestWord(input, words, threshold = 5) {
         }
     });
 
-    // بررسی فاصله با آستانه
+    // Check the distance against the threshold
     return closestDistance <= threshold ? closestWord : null;
 }
 
-// آرایه‌ای از کلمات صحیح
-const correctWords = ['کتاب', 'موبایل', 'کامپیوتر', 'سیستم', 'برنامه نویسی'];
+// Array of correct words
+const correctWords = ['book', 'mobile', 'computer', 'system', 'programming'];
 
-// ورودی کاربر
-const userInput = 'کتب'; // ورودی اشتباه کاربر
+// User input
+const userInput = 'bok'; // User's incorrect input
 
-// پیدا کردن نزدیک‌ترین کلمه
-const suggestion = findClosestWord(userInput, correctWords,8);
+// Find the closest word
+const suggestion = findClosestWord(userInput, correctWords, 8);
 
 if (suggestion) {
-    console.log(`شاید منظورتون "${suggestion}" بوده.`);
+    console.log(`Did you mean "${suggestion}"?`);
 } else {
-    console.log('کلمه‌ای یافت نشد.');
+    console.log('No matching word found.');
 }
